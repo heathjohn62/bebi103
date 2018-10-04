@@ -1,4 +1,8 @@
+# These are folders I am using to store class documents that do not require version 
+# control.
 data/
+tutorials/
+homework_problems/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
