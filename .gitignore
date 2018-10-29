@@ -5,7 +5,7 @@ tutorials/
 homework_problems/
 
 # Link to data folder in AWS instance
-data@
+data
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
