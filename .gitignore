@@ -7,6 +7,10 @@ homework_problems/
 # Link to data folder in AWS instance
 data
 
+# Picture Files used in assignments should not be under version control 
+# unless specified. 
+*.png
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
