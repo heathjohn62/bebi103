@@ -1,4 +1,5 @@
 data{
+    // Model 2
     int N;
     real uM_12[N];
 }
@@ -8,18 +9,27 @@ parameters{
     real beta_;
 }
 
-transformed parameters{
-    real alpha_beta;
-    alpha_beta = normal(700, 100)
-    beta = alpha_ / beta_;
-}
-
 model{
     // Priors
-    tao ~ normal(700, 100);
-    
-    alpha ~ geometric(0.1);
+    alpha_ ~ normal(10, 3);
+    beta_ ~ normal(10, 3);
 
     // Likelihood
-    uM_12 ~ gamma(beta_);
+    uM_12 ~ gamma(alpha_, beta_);
+}
+
+generated quantities{
+    // Parameters
+    real log_like[N];
+    real t_pcc[N]
+    
+    // Draw from likelihood for post check
+    for (i in 1:N) {
+        t_ppc[i] = gamma_rng(alpha_, beta_);
+    }
+    
+    // Pointwise likelihood   
+    for (i in 1:N) {
+        log_like[i] = gamma_lpdf(uM_12[i] | alpha_, beta_);
+    }
 }

@@ -1,4 +1,5 @@
 data{
+    // model 1
     int N;
     real uM_12[N];
 }
