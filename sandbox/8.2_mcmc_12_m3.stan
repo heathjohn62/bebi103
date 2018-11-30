@@ -1,19 +1,35 @@
 data{
-    // model 3
+    // Model 3
     int N;
     real uM_12[N];
 }
 
 parameters{
-    real alpha_;
-    real_beta_;
+    real alpha;
+    real sigma;
 }
 
 model{
     // Priors
-    alpha_ ~ normal(3, 0.05);
+    alpha ~ normal(3, 0.05);
     sigma ~ normal(10, 3);
 
     // Likelihood
-    uM_12 ~ weibull(alpha_, sigma_);
+    uM_12 ~ weibull(alpha, sigma);
+}
+
+generated quantities{
+    // Parameters
+    real log_like[N];
+    real uM_12_ppc[N];
+    
+    // Draw from likelihood for post check
+    for (i in 1:N) {
+        uM_12_ppc[i] = weibull_rng(alpha, sigma);
+    }
+    
+    // Pointwise likelihood   
+    for (i in 1:N) {
+        log_like[i] = weibull_lpdf(uM_12[i] | alpha, sigma);
+    }
 }

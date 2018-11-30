@@ -21,11 +21,11 @@ model{
 generated quantities{
     // Parameters
     real log_like[N];
-    real t_pcc[N]
+    real uM_12_ppc[N];
     
     // Draw from likelihood for post check
     for (i in 1:N) {
-        t_ppc[i] = gamma_rng(alpha_, beta_);
+        uM_12_ppc[i] = gamma_rng(alpha_, beta_);
     }
     
     // Pointwise likelihood   
