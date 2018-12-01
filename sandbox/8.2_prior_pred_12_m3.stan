@@ -5,7 +5,7 @@ data{
 
 generated quantities{
     // Parameters
-    real uM_12[N];
+    real time[N];
     real alpha;
     real sigma;
 
@@ -15,6 +15,6 @@ generated quantities{
     
     // Data
     for (i in 1:N) {
-        uM_12[i] = weibull_rng(alpha, sigma);
+        time[i] = weibull_rng(alpha, sigma);
     }
 }

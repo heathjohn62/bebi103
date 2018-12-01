@@ -1,7 +1,7 @@
 data{
     // Model 2
     int N;
-    real uM_12[N];
+    real time[N];
 }
 
 parameters{
@@ -20,21 +20,21 @@ model{
     tao ~ normal(150, 50);
 
     // Likelihood
-    uM_12 ~ gamma(alpha_, beta_);
+    time ~ gamma(alpha_, beta_);
 }
 
 generated quantities{
     // Parameters
     real log_like[N];
-    real uM_12_ppc[N];
+    real time_ppc[N];
     
     // Draw from likelihood for post check
     for (i in 1:N) {
-        uM_12_ppc[i] = gamma_rng(alpha_, beta_);
+        time_ppc[i] = gamma_rng(alpha_, beta_);
     }
     
     // Pointwise likelihood   
     for (i in 1:N) {
-        log_like[i] = gamma_lpdf(uM_12[i] | alpha_, beta_);
+        log_like[i] = gamma_lpdf(time[i] | alpha_, beta_);
     }
 }
