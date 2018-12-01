@@ -11,8 +11,8 @@ parameters{
 
 model{
     // Priors
-    alpha ~ normal(3, 0.05);
-    sigma ~ normal(10, 3);
+    alpha ~ normal(1, 0.1);
+    sigma ~ normal(400, 100);
 
     // Likelihood
     uM_12 ~ weibull(alpha, sigma);

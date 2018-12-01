@@ -10,8 +10,8 @@ generated quantities{
     real sigma;
 
     // Likelihood  
-    alpha = normal_rng(3, 0.05);
-    sigma = normal_rng(10, 3);
+    alpha = normal_rng(1, 0.1);
+    sigma = normal_rng(400, 100);
     
     // Data
     for (i in 1:N) {

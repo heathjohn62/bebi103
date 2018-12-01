@@ -9,8 +9,8 @@ generated quantities{
     real beta_;
     real alpha;
        
-    alpha = normal_rng(10, 3);
-    beta_ = normal_rng(10, 3);
+    alpha = normal_rng(10, 1);
+    beta_ = 1 / normal_rng(50, 30);
     
     // Data
     for (i in 1:N) {

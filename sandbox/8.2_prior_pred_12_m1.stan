@@ -8,7 +8,7 @@ generated quantities{
     real uM_12[N];
     real beta_;
        
-    beta_ = 1.0 / normal_rng(700, 100);
+    beta_ = 1.0 / normal_rng(400, 100);
     
     // Data
     for (i in 1:N) {

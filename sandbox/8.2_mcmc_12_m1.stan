@@ -15,7 +15,7 @@ transformed parameters{
 
 model{
     // Priors
-    tao ~ normal(700, 100);
+    tao ~ normal(400, 100);
 
     // Likelihood
     uM_12 ~ exponential(beta_);

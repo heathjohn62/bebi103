@@ -6,13 +6,18 @@ data{
 
 parameters{
     real alpha_;
+    real tao;
+}
+
+transformed parameters{
     real beta_;
+    beta_ = 1.0 / tao;
 }
 
 model{
     // Priors
-    alpha_ ~ normal(10, 3);
-    beta_ ~ normal(10, 3);
+    alpha_ ~ normal(10, 1);
+    tao ~ normal(50, 30);
 
     // Likelihood
     uM_12 ~ gamma(alpha_, beta_);
