@@ -1,4 +1,5 @@
 data{
+    // Model 2
     int N;
 }
 
@@ -6,11 +7,13 @@ generated quantities{
     // Parameters
     real uM_12[N];
     real beta_;
+    real alpha;
        
-    beta_ = 1.0/(20.0 * lognormal_rng(0.1, 0.7));
+    alpha = normal_rng(10, 3);
+    beta_ = normal_rng(10, 3);
     
     // Data
     for (i in 1:N) {
-        uM_12[i] = exponential_rng(beta_);
+        uM_12[i] = gamma_rng(alpha, beta_);
     }
 }

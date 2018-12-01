@@ -1,4 +1,5 @@
 data{
+    // Model 1
     int N;
 }
 
@@ -7,7 +8,7 @@ generated quantities{
     real uM_12[N];
     real beta_;
        
-    beta_ = 1.0/(20.0 * lognormal_rng(0.1, 0.7));
+    beta_ = 1.0 / normal_rng(700, 100);
     
     // Data
     for (i in 1:N) {
