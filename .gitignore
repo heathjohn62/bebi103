@@ -11,6 +11,9 @@ data
 # unless specified. 
 *.png
 
+# Cached stan models don't need to be under version control
+cached-anon_model*.pkl
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
