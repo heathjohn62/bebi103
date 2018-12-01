@@ -16,7 +16,7 @@ parameters
 
 transformed parameters
 {
-    real<lower=0> sigma_P = sigma_P_tilde - 1;
+    real<lower=0> sigma_P = sigma_P_tilde * .5;
 }
 
 model
@@ -24,7 +24,7 @@ model
     // hyperparameters
     theta_H ~ lognormal(0.25, 0.5); 
     sigma_H ~ normal(0, 0.5);
-    sigma_P_tilde ~ normal(1, 0.5);
+    sigma_P_tilde ~ normal(0, 1);
 
     // direct parameters
     for (i in 1:num_exps)
