@@ -16,8 +16,8 @@ transformed parameters{
 
 model{
     // Priors
-    alpha_ ~ normal(10, 1);
-    tao ~ normal(50, 30);
+    alpha_ ~ normal(10, 3);
+    tao ~ normal(150, 50);
 
     // Likelihood
     uM_12 ~ gamma(alpha_, beta_);
