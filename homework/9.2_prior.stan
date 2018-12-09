@@ -1,0 +1,26 @@
+data{
+    int N;
+    real cb[N];
+}
+
+generated quantities{
+    // Parameters
+    real Kd;
+    real f0;
+    real fq;
+    real sigma;
+    real ca;
+    real F[N];
+       
+    Kd = lognormal_rng(1, 3);
+    f0 = normal_rng(500000, 50000);
+    fq = normal_rng(50000, 5000);
+    sigma = normal_rng(0.1, 0.1);
+
+    ca = 50;
+    
+    // Data
+    for (i in 1:N) {
+        F[i] = (2 * (f0 - fq) * ca * cb[i]) / (Kd + ca + cb[i] + sqrt(square(Kd + ca + cb[i]) - 4 * ca * cb[i]));
+    }
+}
