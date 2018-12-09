@@ -11,6 +11,7 @@ generated quantities{
     real sigma;
     real ca;
     real F[N];
+    real likelihood[N];
        
     Kd = lognormal_rng(1, 3);
     f0 = normal_rng(500000, 50000);
@@ -22,5 +23,6 @@ generated quantities{
     // Data
     for (i in 1:N) {
         F[i] = (2 * (f0 - fq) * ca * cb[i]) / (Kd + ca + cb[i] + sqrt(square(Kd + ca + cb[i]) - 4 * ca * cb[i]));
+        likelihood[i] = normal_rng(F[i], sigma);
     }
 }
