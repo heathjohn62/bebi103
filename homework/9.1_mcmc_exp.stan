@@ -47,14 +47,9 @@ transformed parameters
     vector<lower=0>[num_divisions] k_2;  // bottom layer growth rate
     vector<lower=1>[num_cells] nu_2;
 
-    // Evaluate transformed params
-    for (n in 1:N)
-    {
-        model_pred[n] = a0_2[div_num[n]] * exp(k_2[div_num[n]] * time[n]);
-    }
-
     sigma_k_0 = 0.002 * sigma_k_0_tilde;
 
+    // Evaluate Transformed params
     for (c in 1:num_cells)
     {
         nu_2[c] = 1 + 10 * nu_2_tilde[c];
@@ -72,6 +67,11 @@ transformed parameters
         k_2[i] = k_1[bac_id_per_div_num[i]] 
                     + sigma_k_1[bac_id_per_div_num[i]]
                     * k_2_tilde[i];
+    }
+
+    for (n in 1:N)
+    {
+        model_pred[n] = a0_2[div_num[n]] * exp(k_2[div_num[n]] * time[n]);
     }
 }
 
