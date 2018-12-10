@@ -13,6 +13,8 @@ data
 
 # Cached stan models don't need to be under version control
 cached-anon_model*.pkl
+# In fact, all pickled files cause problems.
+*.pkl
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
