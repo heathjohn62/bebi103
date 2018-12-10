@@ -1,0 +1,8 @@
+Log file for Exponential MCMC
+John Heath
+n_eff / iter looks reasonable for all parameters.
+Rhat looks reasonable for all parameters.
+10 of 16000 (0.0625%) iterations ended with a divergence.
+  Try running with larger adapt_delta to remove divergences.
+0 of 16000 (0.0%) iterations saturated the maximum tree depth of 13.
+E-BFMI indicated no pathological behavior.
