@@ -14,8 +14,8 @@ generated quantities{
     real likelihood[N];
        
     Kd = lognormal_rng(1, 3);
-    f0 = normal_rng(500000, 50000);
-    fq = normal_rng(50000, 5000);
+    f0 = normal_rng(10000, 1000);
+    fq = normal_rng(1000, 100);
     sigma = fabs(normal_rng(0, 5000));
 
     ca = 50;
