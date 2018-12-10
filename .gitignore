@@ -16,6 +16,9 @@ cached-anon_model*.pkl
 # In fact, all pickled files cause problems.
 *.pkl
 
+# Some mcmc files are too large for git
+*mcmc*.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
