@@ -47,12 +47,6 @@ transformed parameters
     vector<lower=0>[num_divisions] b_2;  // bottom layer growth rate
     vector<lower=1>[num_cells] nu_2;
 
-    // Evaluate transformed params
-    for (n in 1:N)
-    {
-        model_pred[n] = a0_2[div_num[n]] + b_2[div_num[n]] * time[n];
-    }
-
     for (c in 1:num_cells)
     {
         nu_2[c] = 1 + 10 * nu_2_tilde[c];
@@ -71,13 +65,20 @@ transformed parameters
                     + sigma_b_1[bac_id_per_div_num[i]]
                     * b_2_tilde[i];
     }
+    
+    // Evaluate transformed params
+    for (n in 1:N)
+    {
+        model_pred[n] = a0_2[div_num[n]] + b_2[div_num[n]] * time[n];
+    }
+
 }
 
 model
 {
     // priors on hyperparameters
     a0 ~ normal(600, 75);
-    b ~ normal(7, 3); // ARG
+    b ~ normal(7, 3); 
     
     sigma_a_0 ~ normal(0, 50);
     sigma_b_0_tilde ~ normal(0, 1.0);
