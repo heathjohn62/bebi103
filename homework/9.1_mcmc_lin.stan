@@ -33,6 +33,8 @@ parameters{
     vector[num_cells] sigma_2_til;
     vector[num_cells] nu_2_til;
     vector[num_cells] b_1_til;
+    
+    vector[num_divisions] a0_2_til;
 }
 
 transformed parameters{
@@ -58,9 +60,9 @@ transformed parameters{
     
      vector[num_divisions] a0_2 = a0_1[bac_id_per_div_num] 
                   + sigma_a_1[bac_id_per_div_num] 
-                  * a0_1_til;
+                  * a0_2_til;
      vector[num_divisions] b_2 = b_1[bac_id_per_div_num] 
-                 + sigma_b_1[bac_id_per_div_num] * a0_1_til;
+                 + sigma_b_1[bac_id_per_div_num] * a0_2_til;
                  
     // area before we add the student t error to it
     for (n in 1:N)
@@ -75,10 +77,12 @@ model{
     sigma_2_til ~ normal(20, 1);
     nu_2_til ~ lognormal(0.1, 1.0);
     b_1_til ~ normal(0, .1);
+    
+    a0_2_til ~ normal(0, 1);
 
     // Level 0 hyperparameters
     a0 ~ normal(600, 100);
-    b ~ fabsnormal(7, 3); // should be fabs
+    b ~ normal(7, 3); // should be fabs
     sigma_a_0 ~ normal(0, 50); // should be fabs
     sigma_b_0 ~ normal(0, 0.25); // should be fabs
     
