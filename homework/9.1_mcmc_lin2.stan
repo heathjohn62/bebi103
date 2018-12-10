@@ -46,6 +46,8 @@ transformed parameters
     vector<lower=0>[num_divisions] a0_2; // bottom layer growth coefficient 
     vector<lower=0>[num_divisions] b_2;  // bottom layer growth rate
     vector<lower=1>[num_cells] nu_2;
+    
+    sigma_b_0 = 0.02 * sigma_b_0_tilde;
 
     for (c in 1:num_cells)
     {
