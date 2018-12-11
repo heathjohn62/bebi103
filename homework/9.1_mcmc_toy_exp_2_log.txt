@@ -1,0 +1,7 @@
+
+-----------------------------Running new model!---------------------------
+n_eff / iter looks reasonable for all parameters.
+Rhat looks reasonable for all parameters.
+0 of 16000 (0.0%) iterations ended with a divergence.
+0 of 16000 (0.0%) iterations saturated the maximum tree depth of 13.
+E-BFMI indicated no pathological behavior.
