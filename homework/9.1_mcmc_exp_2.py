@@ -42,8 +42,9 @@ except FileNotFoundError:
                                     control=dict(adapt_delta = .97,
                                                  max_treedepth = 14),
                                     warmup=2000, 
-                                    iter=6000, 
-                                    thin=1)
+                                    iter=4000, 
+                                    thin=1,
+                                    chains = 9)
 
     print("Finished Sampling! Pickling samples now.")
     bebi103.stan.pickle_dump_samples(fit = samples_exp, 
