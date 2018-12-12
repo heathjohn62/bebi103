@@ -103,9 +103,15 @@ model
 generated quantities
 {
     real areas_ppc[N];
+    real log_lik[N];
     // perform posterior predictive check
     for (n in 1:N)
     {
         areas_ppc[n] = normal_rng(model_pred[n], sigma_2[bac_id[n]]);
+    }
+    // Compute pointwise log likelihood
+    for (i in 1:N) 
+    {
+        log_lik[i] = normal_lpdf(areas[i] | model_pred[i], sigma_2[bac_id[i]]);
     }
 }
