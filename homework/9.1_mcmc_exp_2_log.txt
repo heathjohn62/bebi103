@@ -1,0 +1,17 @@
+Log file for Exponential MCMC
+n_eff / iter looks reasonable for all parameters.
+Rhat looks reasonable for all parameters.
+0 of 18000 (0.0%) iterations ended with a divergence.
+1 of 18000 (0.005555555555555556%) iterations saturated the maximum tree depth of 14.
+  Try running again with max_treedepth set to a larger value to avoid saturation.
+E-BFMI indicated no pathological behavior.
+8
+Exponential Model Effectiveness Statistics:
+           waic     waic_se     p_waic  warning
+0  96440.798498  1375.44584  539.46252        1
+
+            loo       loo_se       p_loo  warning
+0  96284.754451  1324.431736  461.440497        1
+
+
+
