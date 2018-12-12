@@ -5,6 +5,7 @@ data{
 
 generated quantities{
     // Parameters
+    real Delta_G;
     real<lower=0> Kd;
     real<lower=0> f0;
     real<lower=0> fq;
@@ -14,7 +15,8 @@ generated quantities{
     vector[N] F;
     vector[N] fl;
        
-    Kd = gamma_rng(2, 1);
+    Delta_G = normal_rng(0,1); 
+    Kd = exp(Delta_G);
     f0 = normal_rng(10000, 1000);
     fq = normal_rng(5000, 500);
     sigma_g = fabs(normal_rng(0, 5000));

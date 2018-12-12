@@ -9,8 +9,8 @@ parameters{
     real Delta_G;
     real f0;
     real fq;
-
-    real<lower=0> sigma_g;
+    positive_ordered[2] sigma;
+    real<lower=0, upper=1> w[N];
 }
 
 transformed parameters{
@@ -27,24 +27,29 @@ model{
     Delta_G ~ normal(0, 1);
     f0 ~ normal(10000, 1000);
     fq ~ normal(5000, 500);
-    sigma_g ~ normal(0, 5000);
+    sigma ~ normal(0, 5000);
     
     // likelihood 
-    fl ~ normal(F, sigma_g);
+    
+    for (i in 1:N) {
+    target += log_mix(w[i],
+                      normal_lpdf(fl[i] | F[i], sigma[1]),
+                      normal_lpdf(fl[i] | F[i], sigma[2]));
+  }
 }
 
 generated quantities{
     // Parameters
-    real log_like[N];
     real fl_ppc[N];
     
     // Draw from likelihood for post check
     for (i in 1:N) {
-        fl_ppc[i] = normal_rng(F[i], sigma_g);
+    if (uniform_rng(0.0, 1.0) < w[i]) {
+      fl_ppc[i] = normal_rng(F[i], sigma[1]);
     }
+    else {
+      fl_ppc[i] = normal_rng(F[i], sigma[2]);
+    }    
+  }
     
-    // Pointwise likelihood   
-    for (i in 1:N) {
-        log_like[i] = normal_lpdf(fl[i] | F, sigma_g);
-    }
 }

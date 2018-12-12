@@ -9,8 +9,8 @@ parameters{
     real Delta_G;
     real f0;
     real fq;
-
-    real<lower=0> sigma_g;
+    real<lower=0> sigma;
+    real<lower=1> nu;
 }
 
 transformed parameters{
@@ -27,24 +27,20 @@ model{
     Delta_G ~ normal(0, 1);
     f0 ~ normal(10000, 1000);
     fq ~ normal(5000, 500);
-    sigma_g ~ normal(0, 5000);
+    sigma ~ normal(0, 5000);
+    nu ~ normal(1,100);
     
     // likelihood 
-    fl ~ normal(F, sigma_g);
+    fl ~ student_t(nu, F, sigma);
 }
 
 generated quantities{
     // Parameters
-    real log_like[N];
     real fl_ppc[N];
     
     // Draw from likelihood for post check
     for (i in 1:N) {
-        fl_ppc[i] = normal_rng(F[i], sigma_g);
+        fl_ppc[i] = student_t_rng(nu, F[i], sigma);
     }
     
-    // Pointwise likelihood   
-    for (i in 1:N) {
-        log_like[i] = normal_lpdf(fl[i] | F, sigma_g);
-    }
 }
