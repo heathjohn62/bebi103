@@ -40,7 +40,7 @@ except FileNotFoundError:
                 "areas": data['area (sq µm)'].values}
     samples_lin = mcmc_lin.sampling(data=lin_dict, 
                                     control=dict(adapt_delta = .999,
-                                                 max_treedepth = 11),
+                                                 max_treedepth = 12),
                                     warmup=2000, 
                                     iter=4000, 
                                     thin=3,
