@@ -50,11 +50,11 @@ transformed parameters
 
     // Evaluate Transformed params
 
-    sigma_b_0 = 0.002 * sigma_b_0_tilde;
+    sigma_b_0 = 0.2 * sigma_b_0_tilde;
     sigma_a_0 = 30 * sigma_a_0_tilde;
     sigma_a_1 = 0.005 * sigma_a_1_tilde;
-    sigma_b_1 = 0.001 * sigma_b_1_tilde;
-    b = b_tilde;
+    sigma_b_1 = 0.1 * sigma_b_1_tilde;
+    b = 6.5 + 2 * b_tilde;
     a0 = 600 + 75 * a0_tilde;
 
     for (c in 1:num_cells)
