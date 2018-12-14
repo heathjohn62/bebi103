@@ -39,8 +39,8 @@ except FileNotFoundError:
                 "time": data["time (min)"].values,
                 "areas": data['area (sq µm)'].values}
     samples_lin = mcmc_lin.sampling(data=lin_dict, 
-                                    control=dict(adapt_delta = .90,
-                                                 max_treedepth = 10),
+                                    control=dict(adapt_delta = .97,
+                                                 max_treedepth = 11),
                                     warmup=2000, 
                                     iter=4000, 
                                     thin=3,
