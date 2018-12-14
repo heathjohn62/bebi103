@@ -42,8 +42,8 @@ except FileNotFoundError:
                                     control=dict(adapt_delta = .90,
                                                  max_treedepth = 10),
                                     warmup=2000, 
-                                    iter=6000, 
-                                    thin=1,
+                                    iter=4000, 
+                                    thin=3,
                                     chains = 4)
 
     print("Finished Sampling! Pickling samples now.")
