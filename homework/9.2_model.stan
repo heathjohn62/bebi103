@@ -17,9 +17,9 @@ transformed parameters{
     real Kd;
     real F[N];
     
-    Kd = exp(Delta_G);
+    Kd = exp(-Delta_G);
     for (i in 1:N) {
-        F[i] = f0 * 50 - (2 * (f0 - fq) * 50 * cb[i]) / (Kd + 50 + cb[i] + sqrt(square(Kd + 50 + cb[i])));
+        F[i] = f0 * 50 - (2 * (f0 - fq) * 50 * cb[i]) / (Kd + 50 + cb[i] + sqrt(square(Kd + 50 + cb[i])-4*50*cb[i]));
     }
 }
 model{
